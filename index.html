@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>XRP Ocean Drop, the tsunami is comming 🌊</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section class="ocean-drop hide">
+      <h1>Your <span title="drop">💧</span> For 5 XRP</h1>
+      <p class="drops-remaining">Only 1'000'000 Left!</p>
+
+      <figure class="ocean-address">
+        <img class="ocean-address__img" alt="XRP Ocean Drop Address" />
+        <figcaption>r9chCF3ieEKCVDW1pAvtuDnvcjmBShiVfW</figcaption>
+      </figure>
+      <figure class="ocean-wave hide">
+        <img class="ocean-wave__img" alt="XRP Ocean Drop Tag Address" />
+        <figcaption></figcaption>
+      </figure>
+
+      <a href="https://github.com/ocean-drop/ocean-drop" title="Source code">
+        <img class="github-logo" src="img/github.png" alt="Github Repository"
+      /></a>
+    </section>
+
+    <section class="no-ocean-drop hide">
+      <h1>No more <span title="drop">💧</span> left</h1>
+      <p>More coming soon</p>
+      <p>See the <a href="">result</a></p>
+    </section>
+
+    <div class="falling-drops">
+      <div class="drop"></div>
+      <div class="drop"></div>
+
+      <div class="puddle">
+        <div class="sink"></div>
+        <div class="ripple"></div>
+        <div class="ripple"></div>
+
+        <div class="ripple"></div>
+        <div class="sink"></div>
+        <div class="ripple"></div>
+      </div>
+
+      <div class="drop"></div>
+      <div class="drop"></div>
+    </div>
+
+    <script src="https://unpkg.com/qrcode@1.4.4/build/qrcode.js"></script>
+    <script src="https://unpkg.com/lodash@4.17.20/lodash.min.js"></script>
+    <script src="https://unpkg.com/ripple-lib@1.8.2/build/ripple-latest-min.js"></script>
+    <script type="module">
+      import './src/app.js';
+    </script>
+  </body>
+</html>

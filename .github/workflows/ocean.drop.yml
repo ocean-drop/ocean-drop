@@ -1,0 +1,19 @@
+name: Ocean Drop 🌊
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  Tsunami-Is-Comming:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+      - name: Tsunami 🌊
+        run: |
+          npm ci
+          node src/tsunami.js

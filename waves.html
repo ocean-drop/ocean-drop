@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>XRP Ocean Drop, the tsunami is comming 🌊</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section class="ocean-drop">
+      <h1><a href="/">🌊</a></h1>
+
+      <table class="ocean hide">
+        <thead>
+          <tr>
+            <th>Waves</th>
+            <th>Drops</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <script src="https://unpkg.com/lodash@4.17.20/lodash.min.js"></script>
+    <script src="https://unpkg.com/ripple-lib@1.8.2/build/ripple-latest-min.js"></script>
+
+    <script type="module">
+      import Earth from '/src/Earth.js';
+      import Ocean from '/src/Ocean.js';
+      import Boat from '/src/Boat.js';
+
+      (async () => {
+        const { RippleAPI } = ripple;
+        const rippleAPI = new RippleAPI({
+          server: 'wss://s1.ripple.com',
+        });
+
+        rippleAPI.connect().then(async () => {
+          const oceanDrops = await Earth.getOceanDrops(rippleAPI, Ocean);
+          const oceanWaves = Ocean.filterEmptyWaves(
+            Ocean.dropsByWaves(oceanDrops)
+          );
+          const waves = Object.entries(oceanWaves);
+
+          if (waves.length) {
+            const fragment = document.createDocumentFragment();
+
+            waves.forEach((waveDrops) => {
+              const [wave, drops] = waveDrops;
+              const tr = document.createElement('tr');
+
+              tr.innerHTML = `
+                <td>${wave}</td>
+                <td>${drops}</td>`;
+
+              fragment.append(tr);
+            });
+
+            Boat.$('.ocean tbody').append(fragment);
+            Boat.$('.ocean').classList.remove('hide');
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

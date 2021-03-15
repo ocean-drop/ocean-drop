@@ -1,0 +1,322 @@
+* {
+    box-sizing: border-box;
+
+    margin: 0;
+    padding: 0;
+
+    font-family: 'Londrina Solid', cursive;
+  }
+
+  html,
+  body {
+    background: #193755;
+
+    margin: 0;
+
+    color: #37405e;
+    text-align: center;
+  }
+
+  body {
+    background-image: url('img/kanagawa.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    display: flex;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 100vh;
+  }
+
+  section {
+    display: flex;
+    overflow-y: auto;
+
+    flex-direction: column;
+    gap: 20px;
+
+    padding: 20px;
+
+    letter-spacing: 1px;
+    font-size: 1.6rem;
+    font-size: min(max(1.6rem, 4vw), 40px);
+    font-size: clamp(1.6rem, 4vw, 40px);
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  th {
+    padding: 10px;
+  }
+
+  img {
+    pointer-events: none;
+  }
+
+  .ocean {
+    border-collapse: collapse;
+  }
+
+  .ocean tbody tr {
+    background: #37405e;
+    color: #d4c29e;
+  }
+
+  .ocean tbody tr:nth-child(odd) {
+    background: #d4c29e;
+    color: #37405e;
+  }
+
+  .ocean-drop,
+  .no-ocean-drop {
+    background-color: #f0ebd8ed;
+    border: double #37405e 10px;
+    box-shadow: #000 3px 3px 10px;
+    
+    width: auto;
+    align-items: center;
+    
+    color: #37405e;
+  }
+
+  .ocean-address,
+  .ocean-wave {
+    display: flex;
+
+    flex-direction: column;
+    align-items: center;
+
+    gap: 15px;
+
+    margin: 0;
+  }
+
+  .ocean-address__img,
+  .ocean-wave__img {
+    border-radius: 4px;
+
+    width: 100%;
+    min-width: 172px;
+    max-width: 256px;
+
+    height: auto;
+  }
+
+  .ocean-address figcaption,
+  .ocean-wave figcaption {
+    font-size: 0.7em;
+    word-break: break-all;
+  }
+
+  .github-logo {
+    width: 32px;
+    height: 32px;
+    /* From black to blueish */
+    filter: sepia(100%) hue-rotate(200deg) saturate(700%);
+  }
+
+  /**
+   = falling drops animation
+  **/
+  .falling-drops {
+    position: fixed;
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: #193755;
+  }
+
+  .drop {
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    margin: auto;
+    top: 0px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: #5dadec;
+    border-radius: 50% 1px 50% 50%;
+    transform: rotate(-45deg);
+    animation: drip 0.4s infinite;
+  }
+  .drop:nth-child(2) {
+    border-radius: 50%;
+    transform: rotate(0deg);
+    animation: bounce 0.55s 0.8s infinite;
+  }
+  .drop:nth-child(4) {
+    border-radius: 50%;
+    transform: rotate(45deg);
+    animation: splash-right 0.55s 1.2s infinite;
+  }
+  .drop:nth-child(5) {
+    border-radius: 50%;
+    transform: rotate(45deg);
+    animation: splash-left 0.55s 1.2s infinite;
+  }
+
+  .sink {
+    position: absolute;
+    opacity: 1;
+    width: 0px;
+    height: 0px;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: #5dadec;
+    border-radius: 50%;
+    animation: sink 0.6s 0.35s ease-out;
+  }
+  .sink:nth-child(5) {
+    animation: sink 0.5s 1.3s ease-out;
+  }
+
+  .ripple {
+    position: absolute;
+    opacity: 0;
+    width: 0px;
+    height: 0px;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    border: #5dadec solid 1px;
+    border-radius: 50%;
+    animation: ripple 0.55s 0.4s infinite;
+  }
+  .ripple:nth-child(2) {
+    animation: ripple 0.55s 0.6s infinite;
+  }
+  .ripple:nth-child(3) {
+    animation: ripple 0.55s 1.2s infinite;
+  }
+  .ripple:nth-child(7) {
+    animation: ripple 0.55s 1.4s infinite;
+  }
+
+  @keyframes drip {
+    0% {
+      width: 0px;
+      height: 0px;
+      top: -300px;
+    }
+    50% {
+      width: 20px;
+      height: 20px;
+      top: -100px;
+    }
+    100% {
+      width: 20px;
+      height: 20px;
+      top: 10px;
+    }
+  }
+
+  @keyframes bounce {
+    0% {
+      width: 0px;
+      height: 0px;
+      top: 10px;
+    }
+    40% {
+      width: 10px;
+      height: 10px;
+      top: -100px;
+    }
+    100% {
+      width: 10px;
+      height: 10px;
+      top: 0px;
+    }
+  }
+  @keyframes splash-right {
+    0% {
+      opacity: 1;
+      width: 0px;
+      height: 0px;
+      top: 10px;
+    }
+    60% {
+      opacity: 1;
+      width: 6px;
+      height: 6px;
+      top: -80px;
+      left: 50px;
+    }
+    100% {
+      opacity: 0;
+      width: 6px;
+      height: 6px;
+      top: -70px;
+      left: 80px;
+    }
+  }
+  @keyframes splash-left {
+    0% {
+      opacity: 1;
+      width: 0px;
+      height: 0px;
+      top: 10px;
+    }
+    60% {
+      opacity: 1;
+      width: 6px;
+      height: 6px;
+      top: -60px;
+      left: -50px;
+    }
+    100% {
+      opacity: 0;
+      width: 6px;
+      height: 6px;
+      top: -40px;
+      left: -80px;
+    }
+  }
+
+  @keyframes sink {
+    0% {
+      opacity: 1;
+      width: 0px;
+      height: 0px;
+    }
+    50% {
+      opacity: 1;
+      width: 40px;
+      height: 10px;
+    }
+    100% {
+      opacity: 0;
+      width: 0px;
+      height: 0px;
+    }
+  }
+
+  @keyframes ripple {
+    0% {
+      opacity: 1;
+      width: 60px;
+      height: 10px;
+    }
+    100% {
+      opacity: 0;
+      width: 200px;
+      height: 20px;
+    }
+  }
+
+  .hide {
+    display: none;
+  }

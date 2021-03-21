@@ -113,11 +113,9 @@
     word-break: break-all;
   }
 
-  .github-logo {
+  .logo {
     width: 32px;
     height: 32px;
-    /* From black to blueish */
-    filter: sepia(100%) hue-rotate(200deg) saturate(700%);
   }
 
   /**

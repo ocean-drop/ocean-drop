@@ -5,7 +5,7 @@ import Earth from './Earth.js';
 import Ocean from './Ocean.js';
 
 const rippleAPI = new RippleAPI({
-  server: 'wss://s1.ripple.com',
+  server: 'wss://xrplcluster.com',
 });
 
 const tsunamiASCII = `

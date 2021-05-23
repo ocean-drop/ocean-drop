@@ -5,7 +5,7 @@ import Boat from './Boat.js';
 
 const { RippleAPI } = ripple;
 const rippleAPI = new RippleAPI({
-  server: 'wss://s1.ripple.com',
+  server: 'wss://xrplcluster.com',
 });
 
 const url = new URL(window.location);

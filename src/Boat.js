@@ -1,5 +1,7 @@
 export default class Boat {
-  static $ = document.querySelector.bind(document);
+  static get $ () {
+    return document.querySelector.bind(document);
+  }
 
   static jumpIntoTheOcean(canJumpIntoTheOcean) {
     if (canJumpIntoTheOcean) {
